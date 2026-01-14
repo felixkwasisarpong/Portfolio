@@ -1,0 +1,23 @@
+[00:00:02.174] Server  LOG     ✓ Ready in 2s
+[00:00:22.116] Server  ERROR   ⨯ TypeError: bDate.localeCompare is not a function
+[00:00:22.234] Browser ERROR   uncaughtError: TypeError: bDate.localeCompare is not a function
+[00:00:56.116] Server  ERROR   ⨯ TypeError: bDate.localeCompare is not a function
+[00:00:56.231] Browser ERROR   uncaughtError: TypeError: bDate.localeCompare is not a function
+[00:17:36.794] Server  LOG     ✓ Compiled in 92ms
+[00:18:47.875] Server  LOG     ✓ Compiled in 59ms
+[00:48:45.858] Server  LOG     ✓ Compiled in 103ms
+[00:49:19.111] Server  LOG     ✓ Compiled in 52ms
+[00:49:26.568] Server  LOG     ✓ Compiled in 32ms
+[00:49:28.657] Server  LOG     ✓ Compiled in 13ms
+[01:00:10.839] Server  LOG     ✓ Compiled in 56ms
+[01:00:11.796] Server  LOG     ✓ Compiled in 34ms
+[01:00:17.035] Server  LOG     ✓ Compiled in 32ms
+[01:00:23.640] Server  LOG     ✓ Compiled in 34ms
+[01:00:35.696] Server  LOG     ✓ Compiled in 40ms
+[01:00:41.333] Server  ERROR   ⨯ TypeError: bDate.localeCompare is not a function
+[01:00:41.465] Browser ERROR   uncaughtError: TypeError: bDate.localeCompare is not a function
+[01:05:29.303] Server  LOG     ✓ Compiled in 59ms
+[01:23:07.773] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/Apple/Documents/Personal Projects/portfolio/app'
+[01:23:07.774] Server  ERROR   ⨯ "unhandledRejection:" Error: ENOENT: no such file or directory, scandir '/Users/Apple/Documents/Personal Projects/portfolio/app'
+[01:23:07.774] Server  ERROR   ⨯ "unhandledRejection: " Error: ENOENT: no such file or directory, scandir '/Users/Apple/Documents/Personal Projects/portfolio/app'
+[01:23:07.774] Server  LOG     ✓ Compiled in 559ms
