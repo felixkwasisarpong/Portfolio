@@ -41,6 +41,16 @@ export default function ProjectsPage() {
                   {project.frontmatter.date}
                 </span>
               </div>
+              {project.frontmatter.github && (
+                <a
+                  href={project.frontmatter.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-sm font-medium text-slate-600 transition hover:text-slate-900"
+                >
+                  View on GitHub →
+                </a>
+              )}
               {project.frontmatter.tags?.length ? (
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.frontmatter.tags.map((tag) => (

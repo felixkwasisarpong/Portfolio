@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "812b4b96589ba75c1350a7ce50082740",
-    "previewModeSigningKey": "d9418e7d8e5a1fbb21966b2f7e4c005ccf18279528f1d26d1958001c98fb7111",
-    "previewModeEncryptionKey": "43a7a1a42e7602cab4973d1a8cad0a2a1ee5f143bacdb7f61f5baccf933392d3"
-  }
-}
+{"version":4,"routes":{"/projects/iot-irrigation-streaming-platform":{},"/projects/amazon-sentiment-analysis-pipeline":{},"/projects/fraud-detection-microservice":{},"/projects/cnn-news-summarization":{},"/projects/payments-card-processing-system":{},"/projects/image-captioning-system":{},"/projects/adversarial-attacks-dp-recommenders":{},"/projects/efficient-pathfinding-algorithms":{}},"dynamicRoutes":{"/projects/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[slug]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"7c37167c8e80350cd5956452d76e14ca","previewModeSigningKey":"fcbd4b94b982b4565c822f7d3c3d0dac2fcc1ab38b61179ad4c541a7719889ee","previewModeEncryptionKey":"57b73b9bc6f564e824e6978ef04a410e9e2ad2626fcb98f18d939594ac685e5b"}}

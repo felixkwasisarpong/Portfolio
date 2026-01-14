@@ -16,7 +16,7 @@ export default function ResumePage() {
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <a
-            href="/resume.pdf"
+            href="/Felix_Sarpong_Resume.pdf"
             className="rounded-md bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
             Download PDF

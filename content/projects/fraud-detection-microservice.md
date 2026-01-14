@@ -1,8 +1,9 @@
 ---
 title: Fraud Detection Microservice
-summary: Real-time scoring service that flags anomalous card activity before authorization completes.
-date: 2024-01-10
-tags: [Risk, Streaming, Microservices]
+summary: Event-driven backend service for low-latency anomaly detection on real-time transaction streams.
+date: 2025-12-01
+tags: [Risk, Streaming, Microservices, Onxx, Kafka, Redis, Docker,Springboot, AWS]
+github: https://github.com/felixkwasisarpong/Fraud-Detection
 ---
 
 ## Problem statement

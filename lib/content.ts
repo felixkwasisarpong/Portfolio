@@ -10,6 +10,7 @@ export type ContentFrontmatter = {
   summary?: string;
   date?: string;
   tags?: string[];
+  github?: string;
 };
 
 export type ContentListItem = {
@@ -39,6 +40,7 @@ function parseFrontmatter(filePath: string): { frontmatter: ContentFrontmatter; 
       summary: data.summary ?? "",
       date: typeof dateValue === "string" ? dateValue : "",
       tags: Array.isArray(data.tags) ? data.tags : [],
+      github: data.github ?? "",
     },
     content,
   };

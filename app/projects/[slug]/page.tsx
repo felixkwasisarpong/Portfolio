@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 import { getContentBySlug, getContentList } from "@/lib/content";
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const project = getContentList("projects").find((item) => item.slug === slug);
 
   if (!project) {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const project = await getContentBySlug("projects", slug).catch(() => null);
 
   if (!project) {
@@ -44,6 +44,16 @@ export default async function ProjectPage({ params }: PageProps) {
         <p className="mt-3 text-sm text-slate-600">
           {project.frontmatter.summary}
         </p>
+        {project.frontmatter.github && (
+  <a
+    href={project.frontmatter.github}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mt-4 inline-block text-sm font-semibold text-slate-700 transition hover:text-slate-900"
+  >
+    GitHub Repository →
+  </a>
+)}
         <div className="mt-6 flex flex-wrap gap-2">
           {project.frontmatter.tags?.map((tag) => (
             <span

@@ -122,7 +122,8 @@ function parseFrontmatter(filePath) {
             title: data.title ?? "Untitled",
             summary: data.summary ?? "",
             date: typeof dateValue === "string" ? dateValue : "",
-            tags: Array.isArray(data.tags) ? data.tags : []
+            tags: Array.isArray(data.tags) ? data.tags : [],
+            github: data.github ?? ""
         },
         content
     };
@@ -252,6 +253,17 @@ function ProjectsPage() {
                                     lineNumber: 26,
                                     columnNumber: 15
                                 }, this),
+                                project.frontmatter.github && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                    href: project.frontmatter.github,
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                    className: "mt-2 inline-block text-sm font-medium text-slate-600 transition hover:text-slate-900",
+                                    children: "View on GitHub →"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/projects/page.tsx",
+                                    lineNumber: 45,
+                                    columnNumber: 17
+                                }, this),
                                 project.frontmatter.tags?.length ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "mt-4 flex flex-wrap gap-2",
                                     children: project.frontmatter.tags.map((tag)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -259,12 +271,12 @@ function ProjectsPage() {
                                             children: tag
                                         }, tag, false, {
                                             fileName: "[project]/app/projects/page.tsx",
-                                            lineNumber: 47,
+                                            lineNumber: 57,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/projects/page.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 55,
                                     columnNumber: 17
                                 }, this) : null
                             ]

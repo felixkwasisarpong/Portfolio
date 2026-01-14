@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 import { getContentBySlug, getContentList } from "@/lib/content";
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = getContentList("writing").find((item) => item.slug === slug);
 
   if (!post) {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function WritingPostPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getContentBySlug("writing", slug).catch(() => null);
 
   if (!post) {
