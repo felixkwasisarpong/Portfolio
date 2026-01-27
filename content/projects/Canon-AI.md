@@ -3,7 +3,7 @@ title: Canon — Agentic RAG Academic Correctness & Citation-First AI Platform
 summary: Production-grade, course-aware academic Q&A backend using LangGraph routing + confidence-gated RAG with citations, local LLM inference, and admin-controlled document governance.
 date: 2026-01-27
 tags: [RAG, Agentic AI, LangGraph, FastAPI, PostgreSQL, FAISS, Ollama, Docker, Observability, Security]
-github: <REPLACE_WITH_YOUR_REPO_URL>
+github: https://github.com/felixkwasisarpong/Ai-tutor
 ---
 
 ![Canon Banner](docs/banner.png)
