@@ -34,10 +34,8 @@ export default async function WritingPostPage({ params }: PageProps) {
 
   return (
     <Container>
-      <article className="py-12 sm:py-16">
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
-          Writing
-        </p>
+      <article className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
+        <p className="eyebrow">Writing</p>
         <h1 className="mt-3 text-2xl font-semibold text-slate-900">
           {post.frontmatter.title}
         </h1>
@@ -46,7 +44,7 @@ export default async function WritingPostPage({ params }: PageProps) {
           {post.frontmatter.tags?.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
+              className="pill px-3 py-1 text-xs font-medium"
             >
               {tag}
             </span>

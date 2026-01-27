@@ -1,21 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f8fafc;
   --foreground: #0f172a;
-  --accent: #0f766e;
+  --muted: #475569;
+  --muted-light: #94a3b8;
+  --accent: #0ea5e9;
+  --accent-2: #f97316;
+  --accent-3: #10b981;
+  --surface: rgba(255, 255, 255, 0.76);
+  --surface-strong: #ffffff;
+  --border: #e2e8f0;
+  --shadow-soft: 0 24px 60px -48px rgba(15, 23, 42, 0.45);
+  --shadow-card: 0 18px 40px -32px rgba(15, 23, 42, 0.35);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: radial-gradient(
+      circle at top right,
+      rgba(14, 165, 233, 0.18),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(249, 115, 22, 0.14),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(16, 185, 129, 0.12),
+      transparent 40%
+    ),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 45%, #fff7ed 100%);
   color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), "Times New Roman", serif;
+  letter-spacing: -0.01em;
+}
+
+.panel {
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 55px -42px rgba(15, 23, 42, 0.4);
+}
+
+.pill {
+  border-radius: 999px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  background: rgba(14, 165, 233, 0.1);
+  color: #0369a1;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--muted-light);
+}
+
+.gradient-text {
+  background: linear-gradient(110deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 12px 30px -22px rgba(15, 23, 42, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px -24px rgba(15, 23, 42, 0.5);
+}
+
+.btn-secondary {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--foreground);
+  transition: border-color 0.2s ease, color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(14, 165, 233, 0.35);
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .markdown {

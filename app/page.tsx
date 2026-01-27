@@ -5,16 +5,16 @@ export default function HomePage() {
   return (
     <Container>
       {/* Hero */}
-      <section className="py-16 sm:py-20">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+      <section className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
+        <p className="eyebrow">
           Felix Sarpong
         </p>
 
-        <h1 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+        <h1 className="gradient-text mt-4 text-3xl font-semibold sm:text-4xl">
           Backend & Full-Stack Software Engineer
         </h1>
 
-        <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
+        <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
           Fintech • Distributed Systems • Product Engineering
         </p>
 
@@ -26,14 +26,14 @@ export default function HomePage() {
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
             href="/projects"
-            className="rounded-md bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-300"
+            className="btn-primary px-6 py-2 text-sm font-semibold"
           >
             View Projects
           </Link>
 
           <Link
             href="/writing"
-            className="rounded-md border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+            className="btn-secondary px-6 py-2 text-sm font-semibold"
           >
             Read Writing
           </Link>
@@ -41,13 +41,11 @@ export default function HomePage() {
       </section>
 
       {/* Focus areas */}
-      <section className="border-t border-slate-200 py-12">
-        <h2 className="text-lg font-semibold text-slate-900">
-          What I focus on
-        </h2>
+      <section className="mt-10 rounded-2xl border border-slate-200/70 bg-white/70 p-8 shadow-[0_20px_60px_-48px_rgba(15,23,42,0.45)] backdrop-blur sm:p-10">
+        <h2 className="text-lg font-semibold text-slate-900">What I focus on</h2>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
-          <div className="rounded-lg border border-slate-200 p-5">
+          <div className="card p-5">
             <h3 className="text-sm font-semibold text-slate-900">
               Backend & fintech systems
             </h3>
@@ -57,7 +55,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-slate-200 p-5">
+          <div className="card p-5">
             <h3 className="text-sm font-semibold text-slate-900">
               Reliability & scalability
             </h3>
@@ -67,7 +65,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-slate-200 p-5">
+          <div className="card p-5">
             <h3 className="text-sm font-semibold text-slate-900">
               Full-stack product delivery
             </h3>

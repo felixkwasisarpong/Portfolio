@@ -12,7 +12,7 @@ export default function ProjectsPage() {
 
   return (
     <Container>
-      <section className="py-12 sm:py-16">
+      <section className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
         <h1 className="text-2xl font-semibold text-slate-900">Projects</h1>
         <p className="mt-4 text-base text-slate-600">
           Case studies and engineering notes from systems I have built or led.
@@ -21,14 +21,14 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <article
               key={project.slug}
-              className="rounded-lg border border-slate-200 p-5"
+              className="card p-5"
             >
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h2 className="text-lg font-semibold text-slate-900">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="transition hover:text-slate-700"
+                      className="transition hover:text-sky-600"
                     >
                       {project.frontmatter.title}
                     </Link>
@@ -46,7 +46,7 @@ export default function ProjectsPage() {
                   href={project.frontmatter.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-block text-sm font-medium text-slate-600 transition hover:text-slate-900"
+                  className="mt-2 inline-block text-sm font-medium text-slate-600 transition hover:text-sky-600"
                 >
                   View on GitHub →
                 </a>
@@ -56,7 +56,7 @@ export default function ProjectsPage() {
                   {project.frontmatter.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
+                      className="pill px-3 py-1 text-xs font-medium"
                     >
                       {tag}
                     </span>

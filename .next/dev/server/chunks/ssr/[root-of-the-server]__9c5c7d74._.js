@@ -33,7 +33,7 @@ const metadata = {
 function ContactPage() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Container$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Container"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-            className: "py-12 sm:py-16",
+            className: "panel mt-10 px-8 py-12 sm:px-12 sm:py-16",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                     className: "text-2xl font-semibold text-slate-900",
@@ -55,7 +55,7 @@ function ContactPage() {
                     className: "mt-8 grid gap-6 sm:grid-cols-2",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "rounded-lg border border-slate-200 p-5",
+                            className: "card p-5",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm font-semibold text-slate-900",
@@ -67,7 +67,7 @@ function ContactPage() {
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                     href: "mailto:hello@felixsarpong.dev",
-                                    className: "mt-2 inline-block text-sm text-slate-600 transition hover:text-slate-900",
+                                    className: "mt-2 inline-block text-sm text-slate-600 transition hover:text-sky-600",
                                     children: "felixsarpong25@gmail.com"
                                 }, void 0, false, {
                                     fileName: "[project]/app/contact/page.tsx",
@@ -81,7 +81,7 @@ function ContactPage() {
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "rounded-lg border border-slate-200 p-5",
+                            className: "card p-5",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm font-semibold text-slate-900",
@@ -98,7 +98,7 @@ function ContactPage() {
                                             href: "https://www.linkedin.com/in/felix-kwasi-sarpong/",
                                             target: "_blank",
                                             rel: "noreferrer",
-                                            className: "block text-slate-600 transition hover:text-slate-900",
+                                            className: "block text-slate-600 transition hover:text-sky-600",
                                             children: "LinkedIn"
                                         }, void 0, false, {
                                             fileName: "[project]/app/contact/page.tsx",
@@ -109,7 +109,7 @@ function ContactPage() {
                                             href: "https://github.com/felixsarpong",
                                             target: "_blank",
                                             rel: "noreferrer",
-                                            className: "block text-slate-600 transition hover:text-slate-900",
+                                            className: "block text-slate-600 transition hover:text-sky-600",
                                             children: "GitHub"
                                         }, void 0, false, {
                                             fileName: "[project]/app/contact/page.tsx",
