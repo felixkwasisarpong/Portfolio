@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white text-slate-900 antialiased">
+      <body
+        className={`${manrope.variable} ${fraunces.variable} min-h-screen antialiased`}
+      >
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>

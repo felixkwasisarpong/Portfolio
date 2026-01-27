@@ -6,7 +6,7 @@ tags: [RAG, Agentic AI, LangGraph, FastAPI, PostgreSQL, FAISS, Ollama, Docker, O
 github: https://github.com/felixkwasisarpong/Ai-tutor
 ---
 
-![Canon Banner](/banner.png)
+![Canon Banner](./banner.png)
 
 ## Problem statement
 Typical “AI tutor” chatbots hallucinate, mix courses, and can’t justify answers. For university-level coursework, I needed a system that:
@@ -43,3 +43,75 @@ Retrieved chunks are filtered using **course metadata** and stored in a persiste
       │           │
       ▼           ▼
 FAISS + PDFs   Ollama (Local)
+```
+
+## What I built
+- **Agentic routing (LangGraph)** with policy overrides (course-referenced questions → force RAG)
+- **Course-aware retrieval** using metadata filters (department/course/document)
+- **Admin-only ingestion** for uploading official PDFs + tagging + activation control
+- **Citation-first answers** (document title + chunk index) for auditability
+- **Confidence-gated responses** (high / medium / low / none) with refusal behavior when evidence is insufficient
+- **Document governance**: versioning + “active document” enforcement to prevent silent changes
+- **Platform hardening**: structured logs, request IDs, health checks, and admin audit logs
+
+## Technical decisions & tradeoffs
+- **Local inference (Ollama) vs external APIs**
+  - Chosen for privacy, cost control, and local-first deployment
+  - Tradeoff: answer quality depends on the local model + hardware
+
+- **FAISS for vector search**
+  - Fast and simple for local persistence
+  - Tradeoff: scaling to multi-node needs extra coordination (future: managed vector DB)
+
+- **Confidence-gated RAG + refusals**
+  - Prioritized academic integrity over “always answer”
+  - Tradeoff: requires solid document coverage and sometimes follow-up questions
+
+- **Strict admin boundaries**
+  - Admin endpoints protected (API key / role gating); students only access query endpoints
+  - Tradeoff: more setup, but prevents untrusted ingestion changes
+
+## Observability & reliability
+- Request correlation via **request IDs**
+- Structured logs suitable for production debugging
+- Readiness/health checks for containerized deployment
+- Designed for failure visibility (retrieval confidence + routing trace)
+
+## Screenshots / visuals
+> Replace these with real screenshots from your repo (UI or API demo).
+
+![RAG with citations](./screenshots/citations_example.png)
+![Admin ingestion flow](./screenshots/admin_upload.png)
+
+## Lessons learned
+- Academic “correctness” is mostly **grounding + refusal policies**, not just model capability.
+- **Metadata discipline** (course mapping, active docs, versioning) matters as much as embeddings.
+- Observability (routing + retrieval trace + confidence) makes RAG systems much easier to debug.
+
+## How to run (local)
+```bash
+docker compose up --build
+docker compose exec ollama ollama pull llama3
+```
+
+## Example usage
+```http
+POST /ask
+```
+
+```json
+{
+  "question": "Explain entropy as used in this course",
+  "course_code": "CS5589"
+}
+```
+
+```json
+{
+  "answer": "...",
+  "source": "rag:CS5589",
+  "citations": [
+    { "document": "Lecture 3 – Entropy", "chunk": 14 }
+  ]
+}
+```

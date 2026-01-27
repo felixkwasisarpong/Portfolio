@@ -12,7 +12,7 @@ export default function WritingPage() {
 
   return (
     <Container>
-      <section className="py-12 sm:py-16">
+      <section className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
         <h1 className="text-2xl font-semibold text-slate-900">Writing</h1>
         <p className="mt-4 text-base text-slate-600">
           Notes on building reliable systems and financial infrastructure.
@@ -21,14 +21,14 @@ export default function WritingPage() {
           {posts.map((post) => (
             <article
               key={post.slug}
-              className="rounded-lg border border-slate-200 p-5"
+              className="card p-5"
             >
               <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h2 className="text-lg font-semibold text-slate-900">
                     <Link
                       href={`/writing/${post.slug}`}
-                      className="transition hover:text-slate-700"
+                      className="transition hover:text-sky-600"
                     >
                       {post.frontmatter.title}
                     </Link>
@@ -46,7 +46,7 @@ export default function WritingPage() {
                   {post.frontmatter.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
+                      className="pill px-3 py-1 text-xs font-medium"
                     >
                       {tag}
                     </span>

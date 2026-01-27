@@ -8,7 +8,7 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <Container>
-      <section className="py-12 sm:py-16">
+      <section className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
         <h1 className="text-2xl font-semibold text-slate-900">Contact</h1>
 
         <p className="mt-4 max-w-2xl text-base text-slate-600">
@@ -19,24 +19,24 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-lg border border-slate-200 p-5">
+          <div className="card p-5">
             <p className="text-sm font-semibold text-slate-900">Email</p>
             <a
               href="mailto:hello@felixsarpong.dev"
-              className="mt-2 inline-block text-sm text-slate-600 transition hover:text-slate-900"
+              className="mt-2 inline-block text-sm text-slate-600 transition hover:text-sky-600"
             >
               felixsarpong25@gmail.com
             </a>
           </div>
 
-          <div className="rounded-lg border border-slate-200 p-5">
+          <div className="card p-5">
             <p className="text-sm font-semibold text-slate-900">Elsewhere</p>
             <div className="mt-2 space-y-1 text-sm">
               <a
                 href="https://www.linkedin.com/in/felix-kwasi-sarpong/"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-slate-600 transition hover:text-slate-900"
+                className="block text-slate-600 transition hover:text-sky-600"
               >
                 LinkedIn
               </a>
@@ -44,7 +44,7 @@ export default function ContactPage() {
                 href="https://github.com/felixsarpong"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-slate-600 transition hover:text-slate-900"
+                className="block text-slate-600 transition hover:text-sky-600"
               >
                 GitHub
               </a>

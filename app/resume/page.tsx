@@ -8,7 +8,7 @@ export const metadata = {
 export default function ResumePage() {
   return (
     <Container>
-      <section className="py-12 sm:py-16">
+      <section className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
         <h1 className="text-2xl font-semibold text-slate-900">Resume</h1>
         <p className="mt-4 text-base text-slate-600">
           A concise overview of experience focused on fintech, distributed
@@ -17,7 +17,7 @@ export default function ResumePage() {
         <div className="mt-8 flex flex-wrap gap-4">
           <a
             href="/Felix_Sarpong_Resume.pdf"
-            className="rounded-md bg-slate-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
+            className="btn-primary px-6 py-2 text-sm font-semibold"
           >
             Download PDF
           </a>
@@ -25,7 +25,7 @@ export default function ResumePage() {
             href="https://www.linkedin.com"
             target="_blank"
             rel="noreferrer"
-            className="rounded-md border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+            className="btn-secondary px-6 py-2 text-sm font-semibold"
           >
             LinkedIn
           </a>
@@ -33,7 +33,7 @@ export default function ResumePage() {
             href="https://github.com"
             target="_blank"
             rel="noreferrer"
-            className="rounded-md border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+            className="btn-secondary px-6 py-2 text-sm font-semibold"
           >
             GitHub
           </a>
