@@ -6,7 +6,7 @@ tags: [RAG, Agentic AI, LangGraph, FastAPI, PostgreSQL, FAISS, Ollama, Docker, O
 github: https://github.com/felixkwasisarpong/Ai-tutor
 ---
 
-![Canon Banner](docs/banner.png)
+![Canon Banner](/banner.png)
 
 ## Problem statement
 Typical “AI tutor” chatbots hallucinate, mix courses, and can’t justify answers. For university-level coursework, I needed a system that:
