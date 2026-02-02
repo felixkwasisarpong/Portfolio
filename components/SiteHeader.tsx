@@ -15,7 +15,7 @@ export function SiteHeader() {
       <Container>
         <div className="flex h-16 items-center justify-between gap-6">
           <Link href="/" className="text-sm font-semibold tracking-wide text-slate-900">
-            Felix Sarpong
+            Felix Kwasi Sarpong
           </Link>
           <nav className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
             {navItems.map((item) => (
