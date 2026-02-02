@@ -56,7 +56,7 @@ const stack = [
   </p>
 
   <p>
-    Lately, I’ve been building in the agent-safety space—designing control-plane patterns that govern tool-using
+    Lately, I’ve been building in the agent-safety space designing control-plane patterns that govern tool-using
     AI systems (policy gates, audit-grade decision traces, and safe-by-default execution). My approach is grounded
     in ownership and clarity: explicit data models and state transitions, well-defined failure modes, and recovery
     paths that are boring in production. I care about end-to-end delivery APIs, internal tools, and full-stack
