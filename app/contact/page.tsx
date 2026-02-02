@@ -41,7 +41,7 @@ export default function ContactPage() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com/felixsarpong"
+                href="https://github.com/felixkwasisarpong"
                 target="_blank"
                 rel="noreferrer"
                 className="block text-slate-600 transition hover:text-sky-600"
