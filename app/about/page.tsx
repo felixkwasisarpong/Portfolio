@@ -6,23 +6,34 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  const stack = [
-    "Java",
-    "Spring Boot",
-    "Python",
-    "FastAPI",
-    "AWS",
-    "Kafka",
-    "PostgreSQL",
-    "Redis",
-    "Docker",
-    "Kubernetes",
-    "React",
-    "Angular",
-    "TypeScript",
-    "Prometheus",
-    "Grafana",
-  ];
+const stack = [
+  "Java",
+  "Spring Boot",
+  "Python",
+  "FastAPI",
+  "GraphQL",
+  "Strawberry GraphQL",
+  "LangGraph",
+  "CrewAI",
+  "MCP",
+  "Agent Security",
+  "Neo4j",
+  "GraphRAG",
+  "Pinecone",
+  "AWS",
+  "Kafka",
+  "PostgreSQL",
+  "Redis",
+  "Docker",
+  "Kubernetes",
+  "GitHub Actions",
+  "OpenTelemetry",
+  "Prometheus",
+  "Grafana",
+  "React",
+  "Angular",
+  "TypeScript",
+];
   const stackLoop = [...stack, ...stack];
 
   return (
@@ -30,19 +41,28 @@ export default function AboutPage() {
       <section className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
         <h1 className="text-2xl font-semibold text-slate-900">About</h1>
 
-        <div className="mt-6 space-y-6 text-base text-slate-700">
-          <p>
-I’m a backend-first software engineer who builds and supports production systems for payments/fintech and data-driven platforms. My core stack is Java (Spring Boot) and Python (FastAPI) on AWS, with event-driven workflows using Kafka, plus full-stack delivery with Angular/React (TypeScript) when needed.
-          </p>
+<div className="mt-6 space-y-6 text-base text-slate-700">
+  <p>
+    I’m a backend-first software engineer who builds and supports production systems for payments/fintech and
+    data-driven platforms. My core stack is Java (Spring Boot) and Python (FastAPI) on AWS, with event-driven
+    workflows using Kafka—plus full-stack delivery with Angular/React (TypeScript) when needed.
+  </p>
 
-          <p>
-I’ve worked on services operating under uptime and regulatory constraints, including systems processing 1M+ transactions/day and platforms handling 20M+ transactions/month. I’ve improved MTTR by 35%, supported 2–3 deploys/week, and helped maintain predictable performance (p95 ~140ms) through SQL tuning, Redis caching, and strong observability (Prometheus/Grafana).
+  <p>
+    I’ve shipped services operating under uptime and regulatory constraints, including systems processing 1M+
+    transactions/day and platforms handling 20M+ transactions/month. I’ve reduced MTTR by 35%, supported 2–3
+    deploys/week, and kept performance predictable (p95 ~140ms) through SQL tuning, Redis caching, and strong
+    observability (Prometheus/Grafana).
+  </p>
 
-          </p>
+  <p>
+    Lately, I’ve been building in the agent-safety space—designing control-plane patterns that govern tool-using
+    AI systems (policy gates, audit-grade decision traces, and safe-by-default execution). My approach is grounded
+    in ownership and clarity: explicit data models and state transitions, well-defined failure modes, and recovery
+    paths that are boring in production. I care about end-to-end delivery APIs, internal tools, and full-stack
+    features that connect backend logic to clean, usable interfaces.
+  </p>
 
-          <p>
-My approach is grounded in ownership and clarity: explicit data models and state transitions, well-defined failure modes, and recovery paths that are boring in production. I care about end-to-end delivery—APIs, internal tools, and full-stack features that connect backend logic to clean, usable interfaces.
-          </p>
 
           <div className="pt-2">
             <div className="flex flex-wrap items-end justify-between gap-2">
@@ -90,3 +110,4 @@ I’m open to Backend Engineer / Software Engineer II and Full-Stack Engineer ro
     </Container>
   );
 }
+
