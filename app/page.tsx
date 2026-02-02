@@ -17,7 +17,7 @@ export default function HomePage() {
         </p>
 
         <p className="mt-6 max-w-2xl text-lg text-slate-700">
-          I build production systems for fintech and product teams—reliable APIs,
+          I build production systems for fintech and product teams reliable APIs,
           event-driven services, and full-stack features that stay predictable
           under real-world load.
         </p>
