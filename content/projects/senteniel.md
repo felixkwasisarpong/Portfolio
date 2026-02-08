@@ -1,133 +1,138 @@
 ---
-title: Senteniel — Secure Control Plane for Tool-Using AI Agents
-summary: Production-grade agent safety platform that intercepts tool calls, enforces MCP-based isolation + policy gating, logs audit-grade ToolDecisions, and benchmarks CrewAI vs LangGraph vs a Hybrid FSM under identical constraints.
+title: Senteniel — Human-in-the-Loop Control Plane for Tool-Using AI Agents
+summary: SDK-first control plane that intercepts tool calls, enforces policy gating + human approvals (ALLOW/BLOCK/APPROVAL_REQUIRED), persists audit-grade decisions, and standardizes tool execution across orchestrators and LLM runtimes.
 date: 2026-02-02
-tags: [Agent Security, Tool-Use Safety, MCP, LangGraph, CrewAI, GraphQL, FastAPI, PostgreSQL, Neo4j, GraphRAG, Docker, CI]
+tags: [Agent Safety, Human-in-the-Loop, Tool Governance, MCP, LangGraph, CrewAI, AutoGen, GraphQL, FastAPI, PostgreSQL, Neo4j, Prometheus, Docker Compose]
 github: https://github.com/felixkwasisarpong/Sentinel
 ---
 
 ![Senteniel Banner](./banner1.png)
 
-## Problem statement
-As agents gain the ability to run tools (read files, query logs, mutate data, open tickets), **prompt injection and unsafe tool execution become real security risks**. I needed a platform that:
-- **Intercepts all agent tool calls** (central control plane)
-- Enforces a strict **sandbox boundary** (no direct tool access)
-- Applies **policy gating** and role-aware checks before execution
-- Persists **audit-grade decision traces** for every ALLOW/BLOCK
-- Benchmarks orchestrators fairly (same tools + same policy + same boundary)
+## Problem
+As agents gain the ability to run tools (read files, query logs, mutate data, open tickets), **unsafe tool execution becomes a real security and governance risk**. I needed a platform that:
 
-Senteniel exists to answer one hard question:
+- **Intercepts all tool calls** behind a single control plane (no direct tool access from agents)
+- Enforces a strict **sandbox boundary** (filesystem restricted to `/sandbox`)
+- Applies **policy gating** before execution (**ALLOW / BLOCK / APPROVAL_REQUIRED**)
+- Supports **human-in-the-loop approvals** for risky actions
+- Persists **audit-grade decision traces** for every tool proposal and outcome
+- Works across multiple **orchestrators** and **LLM runtimes** without changing the safety model
+
+Senteniel answers one hard question:
 
 > **“Should this agent be allowed to do this — and can we prove why?”**
 
-## Architecture overview
-Senteniel is a **FastAPI + GraphQL gateway** that sits between agent orchestrators and sandboxed tools:
+---
 
-- Orchestrators propose tool calls:
-  - **CrewAI** (planner → investigator → auditor)
-  - **LangGraph** (graph-based orchestration)
-  - **Hybrid FSM** (deterministic phases + explicit tool governance)
-- The **Gateway** evaluates proposals (allow/block/approval-required), persists the decision, and forwards allowed calls to the MCP sandbox.
-- The **MCP server** executes tools inside a strict boundary (e.g., filesystem actions must stay under `/sandbox`).
-- Neo4j is introduced as a **Policy Graph** to back GraphRAG-style policy grounding (IDs-first; proof mode comes next).
+## What Senteniel is
+Senteniel is an **SDK-first control plane** for safe tool-using agents.
 
-```text
-┌──────────────────────────────┐
-│ Orchestrators                │
-│  - CrewAI (multi-agent)      │
-│  - LangGraph (state graph)   │
-│  - Hybrid FSM (deterministic)│
-└───────────────┬──────────────┘
-                │ tool proposal
-                ▼
-┌──────────────────────────────────────┐
-│ Senteniel Gateway (FastAPI + GraphQL)│
-│  - Policy checks / RBAC              │
-│  - Risk scoring / guardrails         │
-│  - Audit persistence (Postgres)      │
-│  - Policy Graph lookup (Neo4j)       │
-└───────────────┬──────────────────────┘
-                │ allowed tool call
-                ▼
-┌──────────────────────────────┐
-│ MCP Sandbox Server           │
-│  - sandboxed tools           │
-│  - strict path boundary      │
-└───────────────┬──────────────┘
-                ▼
-        Real / Mock Tools
-```
+- Main API service: **`gateway-api` (FastAPI + GraphQL)**
+- Clients:
+  - **Python SDK (`sentinel_sdk`)** calling GraphQL mutations/queries
+  - **Web UI (Next.js)** calling GraphQL
+- Orchestrators inside gateway:
+  - **LangGraph**
+  - **CrewAI**
+  - **AutoGen** 
+- Policy/safety plane:
+  - All tool calls go through **`proposeToolCall`**
+  - Outcomes: **ALLOW / BLOCK / APPROVAL_REQUIRED**
+  - Approval state machine: **PENDING → APPROVED → EXECUTED** or **PENDING → DENIED**
+- Data/infra:
+  - **Postgres**: runs, tool_calls, decisions, MCP registry
+  - **Neo4j**: policy graph/citations (grounding & proof mode foundation)
+  - **Prometheus**: metrics
+  - LLM inference via OpenAI-compatible endpoints:
+    - **Ollama** (`/v1`)
+    - **OpenAI**
+    - **Anthropic**
+- Deployment: **Docker Compose**
+
+---
+
+## Architecture (Human-in-the-Loop focused)
+
+**High-level flow:**
+1. Agent/orchestrator proposes a tool call via `proposeToolCall(tool,args)`
+2. Policy engine evaluates risk and returns **ALLOW**, **BLOCK**, or **APPROVAL_REQUIRED**
+3. If approval is required, a human approves/denies in the UI/SDK
+4. Allowed calls execute in a sandboxed tool environment; everything is audited
+
+![Architecture: Human-in-the-Loop Control Plane](./archi.png)
+
+### Trust boundaries (conceptual)
+- **Client boundary**: SDK / UI requests (untrusted input)
+- **Control plane boundary**: gateway + policy + orchestration (decisioning and auditing)
+- **Tool execution boundary**: tool runner / MCP execution (blast radius contained)
+- **Data boundary**: Postgres/Neo4j/metrics (integrity + retention)
+
+---
+
+## Key capability: Human-in-the-Loop approvals
+Senteniel treats “approval” as a **first-class workflow**, not a UI afterthought.
+
+- Decision outcomes: **ALLOW / BLOCK / APPROVAL_REQUIRED**
+- Approval state machine:
+  - **PENDING → APPROVED → EXECUTED**
+  - **PENDING → DENIED**
+- Every transition is persisted (who approved/denied, when, and what was executed)
+
+---
+
+## Tool discovery + governance (without trusting tools by default)
+Before tool execution, Senteniel discovers and stores tool contracts:
+
+- MCP registry in Postgres: `mcp_servers`, `mcp_tools`
+- Tool sync: **`syncMcpTools`**
+- StdIO mode: tools may auto-sync on first tool call (configurable)
+- Default posture: **unknown tools are not executable** until discovered & governed
+
+./screenshots/tool_registry.png`
+
+![Tool registry and contracts](./sequence.png)
+
+---
 
 ## What I built
-- **Control plane gateway** that intercepts every tool proposal and returns a unified, audit-friendly decision object (`ToolDecision`)
-- **MCP-based tool isolation**:
-  - Tools execute only inside a sandboxed MCP server
-  - Filesystem tools enforce **path under `/sandbox`**
+- **Control plane gateway** that intercepts every tool proposal and returns a unified decision object (`ToolDecision`)
+- **Human-in-the-loop approval workflow** with explicit states and durable audit records
+- **Sandbox enforcement**:
+  - filesystem actions must stay under `/sandbox`
 - **Audit-grade persistence** in Postgres:
-  - `runs`, `tool_calls`, `decisions`
+  - `runs`, `tool_calls`, `decisions`, `mcp_servers`, `mcp_tools`
   - **BLOCK attempts are persisted** with a real `tool_call_id`
-- **Unified response contract** across orchestrators:
-  - consistent `tool_decision` output for ALLOW/BLOCK flows
-- **Three-orchestrator benchmark setup**:
-  - CrewAI vs LangGraph vs Hybrid FSM
-  - fairness rule: same tools, same policy rules, same sandbox boundary; only orchestration changes
-- **Neo4j Policy Graph foundation** (Phase 2A):
-  - constraints + indexes for `Policy`, `Control`, `Incident`, `ToolContract`
-  - seeded IDs to support GraphRAG-backed citations (IDs-only mode)
+- **Orchestrator-agnostic safety layer**:
+  - same policy model applied to **LangGraph**, **CrewAI**, **AutoGen**
+- **Multi-runtime LLM support**:
+  - route through **Ollama/OpenAI/Anthropic** depending on environment
+- **Neo4j policy graph foundation**:
+  - groundwork for policy grounding + citations (IDs-first; proof mode next)
+- **Metrics**:
+  - Prometheus instrumentation for latency, decision counts, tool call volume, approval queue stats
+
+---
 
 ## Technical decisions & tradeoffs
-- **MCP sandbox boundary vs direct tool calls**
-  - Chosen to make tool safety enforceable and testable (not “best-effort”)
-  - Tradeoff: requires more infrastructure wiring, but enables real security guarantees
+### Why a control plane (vs. direct tool calls)
+- **Chosen**: centralized policy enforcement + consistent audit
+- **Tradeoff**: more wiring, but safety becomes enforceable (not best-effort)
 
-- **GraphQL gateway for tool decisions**
-  - Clean, centralized contract for auditing + UI + evaluation harness
-  - Tradeoff: additional layer, but simplifies governance and consistency
+### Why “runner/execution plane” separation
+In real deployments, the control plane container typically **should not** depend on host-centric tooling.
+The execution plane (tool-runner) can own runtime dependencies safely and be locked down by network/policy.
 
-- **Orchestrator comparison (CrewAI, LangGraph, Hybrid FSM)**
-  - Demonstrates how orchestration style impacts safety, latency, and tool-call discipline
-  - Tradeoff: more implementation work, but strong recruiter signal (evaluation mindset)
+- **Chosen**: isolates tool execution runtime needs from the gateway
+- **Tradeoff**: additional hop, but clearer security boundary and better portability
 
-- **Neo4j “IDs-only” citations first**
-  - Avoids LLM summarization/hallucinated policy explanations early
-  - Tradeoff: less “pretty” explanations at first, but maximizes correctness and auditability
+### Why IDs-first citations in Neo4j
+- **Chosen**: correctness and auditability before narrative explanations
+- **Tradeoff**: less “pretty” initially, but more trustworthy foundations
 
-## Observability & reliability
-- Durable audit records for tool proposals and outcomes
-- Deterministic BLOCK behavior for boundary violations (`/sandbox` enforcement)
-- Designed for CI-driven regression protection (Phase 3 eval harness + gate)
 
-## Screenshots / visuals
-> Replace these with real screenshots from your repo (UI, GraphQL responses, dashboard).
+---
 
-![Blocked tool call decision](./screenshots/blocked_tool_decision.png)
-![Audit DB runs and decisions](./screenshots/audit_tables.png)
-
-## Lessons learned
-- The core of agent safety is **governed tool execution**, not “better prompts.”
-- Consistent contracts (`ToolDecision`) make debugging + evaluation dramatically easier.
-- A usable security platform needs **auditability by default** (persist ALLOW and BLOCK equally).
-- “GraphRAG for policy” is most trustworthy when it starts as **IDs-only grounding** before adding narrative explanations.
-
-## How to run (local)
-```bash
-docker compose up -d --build
-```
-
-If you use the repo Makefile:
-```bash
-make up
-make ps
-make down
-```
-
-## Example usage
-### LangGraph runner
-```bash
-curl "http://localhost:8000/agent/run?task=read /etc/passwd"
-```
-
-Example decision:
+## Example: Decision object
 ```json
 {
   "tool_call_id": "<uuid>",
@@ -138,14 +143,3 @@ Example decision:
   "incident_refs": [],
   "control_refs": []
 }
-```
-
-### CrewAI runner
-```bash
-curl "http://localhost:8000/agent/crew/run?task=list files"
-```
-
-### Hybrid FSM runner
-```bash
-curl "http://localhost:8000/agent/fsm/run?task=read /etc/passwd"
-```

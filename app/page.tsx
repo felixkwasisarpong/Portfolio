@@ -13,13 +13,13 @@ export default function HomePage() {
         </h1>
 
         <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-          Java/Spring Boot • Python/FastAPI • AWS • Kafka • React/Angular
+  Java/Spring Boot • Python/FastAPI • AWS • Kafka • React/Angular • Agent tooling (HITL) • MCP
         </p>
 
         <p className="mt-6 max-w-2xl text-lg text-slate-700">
-          I build production systems for fintech and product teams reliable APIs,
-          event-driven services, and full-stack features that stay predictable
-          under real-world load.
+ I build production systems for fintech and product teams: reliable APIs,
+  event-driven services, and full-stack features that stay predictable under
+  real-world load, plus safe, human-in-the-loop workflows for tool-using agents.
         </p>
 
         {/* Proof/metrics row */}
@@ -77,55 +77,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Focus areas */}
-      <section className="mt-10 rounded-2xl border border-slate-200/70 bg-white/70 p-8 shadow-[0_20px_60px_-48px_rgba(15,23,42,0.45)] backdrop-blur sm:p-10">
-        <h2 className="text-lg font-semibold text-slate-900">What I focus on</h2>
-        <p className="mt-2 max-w-2xl text-sm text-slate-600">
-          Backend-first delivery with strong product instincts: build the API,
-          ship the UI, and keep production boring.
-        </p>
+{/* Focus areas */}
+<section className="mt-10 rounded-2xl border border-slate-200/70 bg-white/70 p-8 shadow-[0_20px_60px_-48px_rgba(15,23,42,0.45)] backdrop-blur sm:p-10">
+  <h2 className="text-lg font-semibold text-slate-900">What I focus on</h2>
+  <p className="mt-2 max-w-2xl text-sm text-slate-600">
+    Backend-first delivery with strong product instincts: build the API, ship the
+    UI, and keep production boring — with clear safety and auditability when
+    systems take actions.
+  </p>
 
-        <div className="mt-6 grid gap-6 sm:grid-cols-3">
-          <div className="card p-5">
-            <h3 className="text-sm font-semibold text-slate-900">
-              Backend & fintech systems
-            </h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Payment flows, state transitions, and integrations built with{" "}
-              <span className="font-semibold text-slate-700">
-                Spring Boot/FastAPI
-              </span>{" "}
-              and event-driven messaging{" "}
-              <span className="font-semibold text-slate-700">(Kafka)</span>.
-            </p>
-          </div>
+  <div className="mt-6 grid gap-6 sm:grid-cols-3">
+    <div className="card p-5">
+      <h3 className="text-sm font-semibold text-slate-900">
+        Backend & fintech systems
+      </h3>
+      <p className="mt-2 text-sm text-slate-600">
+        Payment flows, state transitions, and integrations built with{" "}
+        <span className="font-semibold text-slate-700">
+          Spring Boot/FastAPI
+        </span>{" "}
+        and event-driven messaging{" "}
+        <span className="font-semibold text-slate-700">(Kafka)</span>.
+      </p>
+    </div>
 
-          <div className="card p-5">
-            <h3 className="text-sm font-semibold text-slate-900">
-              Reliability & scalability
-            </h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Observability, incident response, and performance work across{" "}
-              <span className="font-semibold text-slate-700">
-                AWS + SQL/Redis
-              </span>{" "}
-              to keep latency predictable and recovery paths clear.
-            </p>
-          </div>
+    <div className="card p-5">
+      <h3 className="text-sm font-semibold text-slate-900">
+        Reliability & scalability
+      </h3>
+      <p className="mt-2 text-sm text-slate-600">
+        Observability, incident response, and performance work across{" "}
+        <span className="font-semibold text-slate-700">
+          AWS + SQL/Redis
+        </span>{" "}
+        to keep latency predictable and recovery paths clear.
+      </p>
+    </div>
 
-          <div className="card p-5">
-            <h3 className="text-sm font-semibold text-slate-900">
-              Full-stack product delivery
-            </h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Shipping end-to-end features by connecting APIs, data models, and{" "}
-              <span className="font-semibold text-slate-700">
-                React/Angular (TypeScript)
-              </span>{" "}
-              into cohesive products.
-            </p>
-          </div>
-        </div>
+    <div className="card p-5">
+      <h3 className="text-sm font-semibold text-slate-900">
+        Agentic platforms & governance
+      </h3>
+      <p className="mt-2 text-sm text-slate-600">
+        Tool-using agents with{" "}
+        <span className="font-semibold text-slate-700">
+          human-in-the-loop approvals
+        </span>, policy gates, and audit trails, deployed across cloud and local
+        runtimes.
+      </p>
+    </div>
+  </div>
 
         {/* Optional: a small secondary CTA row */}
         <div className="mt-8 flex flex-wrap gap-3">
