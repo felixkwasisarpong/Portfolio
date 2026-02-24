@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
+  --background: #f8f5ef;
   --foreground: #0f172a;
   --muted: #475569;
   --muted-light: #94a3b8;
-  --accent: #0ea5e9;
-  --accent-2: #f97316;
-  --accent-3: #10b981;
-  --surface: rgba(255, 255, 255, 0.76);
+  --accent: #e4584b;
+  --accent-2: #f59e0b;
+  --accent-3: #14b8a6;
+  --surface: rgba(255, 255, 255, 0.82);
   --surface-strong: #ffffff;
-  --border: #e2e8f0;
+  --border: #e4ddd3;
   --shadow-soft: 0 24px 60px -48px rgba(15, 23, 42, 0.45);
   --shadow-card: 0 18px 40px -32px rgba(15, 23, 42, 0.35);
 }
@@ -18,21 +18,21 @@
 body {
   background-color: var(--background);
   background-image: radial-gradient(
-      circle at top right,
-      rgba(14, 165, 233, 0.18),
+      circle at 100% 0%,
+      rgba(228, 88, 75, 0.14),
       transparent 45%
     ),
     radial-gradient(
-      circle at 20% 20%,
-      rgba(249, 115, 22, 0.14),
+      circle at 12% 12%,
+      rgba(245, 158, 11, 0.12),
       transparent 42%
     ),
     radial-gradient(
-      circle at 20% 80%,
-      rgba(16, 185, 129, 0.12),
-      transparent 40%
+      circle at 22% 86%,
+      rgba(20, 184, 166, 0.11),
+      transparent 45%
     ),
-    linear-gradient(180deg, #f8fafc 0%, #eef2ff 45%, #fff7ed 100%);
+    linear-gradient(180deg, #f8f5ef 0%, #f7f4ed 42%, #fefaf2 100%);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -51,10 +51,10 @@ h3 {
 }
 
 .panel {
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
   border: 1px solid var(--border);
   background: var(--surface);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(10px);
 }
 
@@ -62,7 +62,7 @@ h3 {
   border-radius: 1rem;
   border: 1px solid var(--border);
   background: var(--surface-strong);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -73,9 +73,9 @@ h3 {
 
 .pill {
   border-radius: 999px;
-  border: 1px solid rgba(14, 165, 233, 0.2);
-  background: rgba(14, 165, 233, 0.1);
-  color: #0369a1;
+  border: 1px solid rgba(228, 88, 75, 0.18);
+  background: rgba(228, 88, 75, 0.08);
+  color: #b42318;
 }
 
 .eyebrow {
@@ -87,7 +87,7 @@ h3 {
 }
 
 .gradient-text {
-  background: linear-gradient(110deg, var(--accent), var(--accent-2));
+  background: linear-gradient(112deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -96,28 +96,65 @@ h3 {
   border-radius: 999px;
   background: linear-gradient(120deg, var(--accent), var(--accent-2));
   color: #fff;
-  box-shadow: 0 12px 30px -22px rgba(15, 23, 42, 0.6);
+  box-shadow: 0 14px 28px -20px rgba(228, 88, 75, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 40px -24px rgba(15, 23, 42, 0.5);
+  box-shadow: 0 18px 36px -22px rgba(228, 88, 75, 0.42);
 }
 
 .btn-secondary {
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--foreground);
   transition: border-color 0.2s ease, color 0.2s ease,
     background-color 0.2s ease;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(14, 165, 233, 0.35);
+  border-color: rgba(228, 88, 75, 0.25);
   color: #0f172a;
   background: rgba(255, 255, 255, 0.95);
+}
+
+.accent-rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(228, 88, 75, 0.18);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 0.25rem 0.45rem;
+}
+
+.accent-rule::before,
+.accent-rule::after {
+  content: "";
+  display: block;
+  border-radius: 999px;
+}
+
+.accent-rule::before {
+  height: 0.5rem;
+  width: 0.5rem;
+  background: var(--accent);
+}
+
+.accent-rule::after {
+  height: 0.25rem;
+  width: 2.25rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.paper-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
 }
 
 .markdown {
