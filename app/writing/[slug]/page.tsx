@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { getContentBySlug, getContentList } from "@/lib/content";
 
@@ -14,9 +15,7 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const post = getContentList("writing").find((item) => item.slug === slug);
 
-  if (!post) {
-    return {};
-  }
+  if (!post) return {};
 
   return {
     title: post.frontmatter.title,
@@ -28,30 +27,35 @@ export default async function WritingPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = await getContentBySlug("writing", slug).catch(() => null);
 
-  if (!post) {
-    notFound();
-  }
+  if (!post) notFound();
 
   return (
     <Container>
-      <article className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
-        <p className="eyebrow">Writing</p>
-        <h1 className="mt-3 text-2xl font-semibold text-slate-900">
+      <article className="kj-section mt-12 fade-up">
+        <Link href="/writing" className="link-underline text-sm font-semibold text-slate-600">
+          ← Back to shelf
+        </Link>
+
+        <div className="mt-6 flex items-center gap-3">
+          <span className="accent-rule" />
+          <p className="section-kicker">Writing</p>
+        </div>
+
+        <h1 className="mt-4 max-w-4xl text-3xl font-semibold leading-[0.95] tracking-[-0.04em] text-slate-950 sm:text-5xl">
           {post.frontmatter.title}
         </h1>
-        <p className="mt-3 text-sm text-slate-600">{post.frontmatter.date}</p>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {post.frontmatter.tags?.map((tag) => (
-            <span
-              key={tag}
-              className="pill px-3 py-1 text-xs font-medium"
-            >
+
+        <div className="mt-5 flex flex-wrap items-center gap-2">
+          {post.frontmatter.date ? <span className="kj-meta">{post.frontmatter.date}</span> : null}
+          {(post.frontmatter.tags ?? []).map((tag) => (
+            <span key={tag} className="pill px-2.5 py-1 text-[11px] font-medium">
               {tag}
             </span>
           ))}
         </div>
+
         <div
-          className="markdown mt-10 space-y-6"
+          className="markdown mt-10 rounded-xl border border-slate-200 bg-white p-6 sm:p-8"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
       </article>

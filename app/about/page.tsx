@@ -6,108 +6,106 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-const stack = [
-  "Java",
-  "Spring Boot",
-  "Python",
-  "FastAPI",
-  "GraphQL",
-  "Strawberry GraphQL",
-  "LangGraph",
-  "CrewAI",
-  "MCP",
-  "Agent Security",
-  "Neo4j",
-  "GraphRAG",
-  "Pinecone",
-  "AWS",
-  "Kafka",
-  "PostgreSQL",
-  "Redis",
-  "Docker",
-  "Kubernetes",
-  "GitHub Actions",
-  "OpenTelemetry",
-  "Prometheus",
-  "Grafana",
-  "React",
-  "Angular",
-  "TypeScript",
-];
+  const stack = [
+    "Java",
+    "Spring Boot",
+    "Python",
+    "FastAPI",
+    "GraphQL",
+    "LangGraph",
+    "MCP",
+    "AWS",
+    "Kafka",
+    "PostgreSQL",
+    "Redis",
+    "Docker",
+    "Kubernetes",
+    "OpenTelemetry",
+    "Prometheus",
+    "Grafana",
+    "React",
+    "Angular",
+    "TypeScript",
+  ];
   const stackLoop = [...stack, ...stack];
 
   return (
     <Container>
-      <section className="panel mt-10 px-8 py-12 sm:px-12 sm:py-16">
-        <h1 className="text-2xl font-semibold text-slate-900">About</h1>
+      <section className="kj-section mt-12 fade-up">
+        <p className="section-kicker">About</p>
+        <h1 className="section-title mt-3 max-w-4xl">
+          Backend-first engineer focused on reliable systems, clear failure modes, and production ownership.
+        </h1>
 
-<div className="mt-6 space-y-6 text-base text-slate-700">
-  <p>
-    I’m a backend-first software engineer who builds and supports production systems for payments/fintech and
-    data-driven platforms. My core stack is Java (Spring Boot) and Python (FastAPI) on AWS, with event-driven
-    workflows using Kafka—plus full-stack delivery with Angular/React (TypeScript) when needed.
-  </p>
-
-  <p>
-    I’ve shipped services operating under uptime and regulatory constraints, including systems processing 1M+
-    transactions/day and platforms handling 20M+ transactions/month. I’ve reduced MTTR by 35%, supported 2–3
-    deploys/week, and kept performance predictable (p95 ~140ms) through SQL tuning, Redis caching, and strong
-    observability (Prometheus/Grafana).
-  </p>
-
-  <p>
-    Lately, I’ve been building in the agent-safety space designing control-plane patterns that govern tool-using
-    AI systems (policy gates, audit-grade decision traces, and safe-by-default execution). My approach is grounded
-    in ownership and clarity: explicit data models and state transitions, well-defined failure modes, and recovery
-    paths that are boring in production. I care about end-to-end delivery APIs, internal tools, and full-stack
-    features that connect backend logic to clean, usable interfaces.
-  </p>
-
-
-          <div className="pt-2">
-            <div className="flex flex-wrap items-end justify-between gap-2">
-              <h2 className="text-lg font-semibold text-slate-900">
-                Stack highlights
-              </h2>
-              <span className="text-sm text-slate-500">
-                Logos scroll left to right. Hover to pause.
-              </span>
-            </div>
-
-            <div
-              className="logo-marquee mt-5"
-              aria-label="Technology stack logos carousel"
-            >
-              <div className="logo-track">
-                {stackLoop.map((item, index) => {
-                  const initials = item
-                    .split(" ")
-                    .map((part) => part[0])
-                    .join("")
-                    .slice(0, 2)
-                    .toUpperCase();
-
-                  return (
-                    <div key={`${item}-${index}`} className="logo-card">
-                      <span className="logo-mark" aria-hidden="true">
-                        {initials}
-                      </span>
-                      <span className="logo-label">{item}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="space-y-4 text-sm leading-7 text-slate-600 sm:text-base">
+            <p>
+              I build and support production systems for payments/fintech and data-driven platforms. My core stack is Java (Spring Boot) and Python (FastAPI) on AWS, with event-driven workflows using Kafka, plus full-stack delivery with Angular/React when needed.
+            </p>
+            <p>
+              I&apos;ve shipped services operating under uptime and regulatory constraints, including systems processing 1M+ transactions/day and platforms handling 20M+ transactions/month. I care about keeping systems predictable under real-world load and incidents.
+            </p>
+            <p>
+              More recently, I&apos;ve been building around agent safety and control planes: policy gates, human approvals, audit trails, and explicit data models for tool-using AI systems in production.
+            </p>
           </div>
 
-          <p>
-I’m open to Backend Engineer / Software Engineer II and Full-Stack Engineer roles (backend-leaning), especially in payments, distributed workflows, and reliability-focused teams.
-          </p>
+          <aside className="card p-5">
+            <p className="section-kicker">Open to</p>
+            <h2 className="mt-3 text-xl font-semibold tracking-[-0.03em] text-slate-950">
+              Backend Engineer / Software Engineer II / Full-Stack (backend-leaning)
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              Especially interested in payments, distributed workflows, reliability engineering, and high-trust product teams.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[
+                "Payments",
+                "Distributed Systems",
+                "Reliability",
+                "Agent Tooling",
+              ].map((tag) => (
+                <span key={tag} className="pill px-2.5 py-1 text-[11px] font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </aside>
+        </div>
 
-      
+        <div className="mt-10 border-t border-slate-200 pt-8">
+          <div className="flex items-center gap-3">
+            <span className="accent-rule" />
+            <p className="section-kicker">Top skills</p>
+          </div>
+          <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-slate-950">
+            Tooling and platform stack
+          </h2>
+          <p className="mt-2 text-sm text-slate-600">Hover to pause the strip.</p>
+
+          <div className="logo-marquee mt-5" aria-label="Technology stack carousel">
+            <div className="logo-track">
+              {stackLoop.map((item, index) => {
+                const initials = item
+                  .split(" ")
+                  .map((part) => part[0])
+                  .join("")
+                  .slice(0, 2)
+                  .toUpperCase();
+
+                return (
+                  <div key={`${item}-${index}`} className="logo-card">
+                    <span className="logo-mark" aria-hidden="true">
+                      {initials}
+                    </span>
+                    <span className="logo-label">{item}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
     </Container>
   );
 }
-
