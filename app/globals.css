@@ -157,6 +157,56 @@ h3 {
   background-position: -1px -1px;
 }
 
+.section-kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #64748b;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: #0f172a;
+}
+
+.section-copy {
+  color: #475569;
+  line-height: 1.65;
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-decoration-color: rgba(148, 163, 184, 0.55);
+  text-underline-offset: 0.22rem;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.link-underline:hover {
+  color: #0f172a;
+  text-decoration-color: rgba(15, 23, 42, 0.4);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade-up 0.55s ease forwards;
+}
+
+.fade-up-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.fade-up-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.fade-up-delay-3 {
+  animation-delay: 0.24s;
+}
+
 .markdown {
   max-width: 65ch;
   color: #1f2937;
@@ -193,6 +243,35 @@ h3 {
 
 .markdown li {
   margin-top: 0.4rem;
+}
+
+.markdown blockquote {
+  margin-top: 1.25rem;
+  border-left: 3px solid rgba(228, 88, 75, 0.25);
+  padding-left: 1rem;
+  color: #475569;
+}
+
+.markdown pre {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #0f172a;
+  padding: 0.9rem 1rem;
+  color: #e2e8f0;
+}
+
+.markdown code {
+  border-radius: 0.35rem;
+  background: rgba(148, 163, 184, 0.12);
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+
+.markdown pre code {
+  background: transparent;
+  padding: 0;
 }
 
 .logo-marquee {
@@ -267,8 +346,24 @@ h3 {
   }
 }
 
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .logo-track {
+    animation: none;
+  }
+
+  .fade-up,
+  .fade-up-delay-1,
+  .fade-up-delay-2,
+  .fade-up-delay-3 {
+    opacity: 1;
+    transform: none;
     animation: none;
   }
 }

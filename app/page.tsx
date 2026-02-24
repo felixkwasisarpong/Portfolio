@@ -37,12 +37,12 @@ export default function HomePage() {
 
   return (
     <Container>
-      <section className="panel paper-grid relative mt-10 overflow-hidden px-8 py-10 sm:px-12 sm:py-12">
+      <section className="panel paper-grid fade-up relative mt-10 overflow-hidden px-8 py-10 sm:px-12 sm:py-12">
         <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gradient-to-br from-rose-300/30 to-orange-200/20 blur-2xl" />
         <div className="pointer-events-none absolute -bottom-20 -left-10 h-44 w-44 rounded-full bg-gradient-to-br from-teal-300/25 to-cyan-200/15 blur-2xl" />
 
         <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
+          <div className="fade-up fade-up-delay-1">
             <p className="eyebrow">Felix Sarpong</p>
             <div className="mt-4 inline-flex -rotate-1 items-center rounded-full border border-slate-900 bg-slate-900 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-sm">
               Backend • Fintech • Agent Tooling
@@ -108,7 +108,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="card relative overflow-hidden border-2 border-slate-900/85 bg-slate-950 p-0 text-slate-100 shadow-[0_24px_55px_-36px_rgba(15,23,42,0.8)]">
+          <aside className="card fade-up fade-up-delay-2 relative overflow-hidden border-2 border-slate-900/85 bg-slate-950 p-0 text-slate-100 shadow-[0_24px_55px_-36px_rgba(15,23,42,0.8)]">
             <div className="h-2 bg-gradient-to-r from-rose-400 via-amber-300 to-teal-300" />
             <div className="p-6">
               <div className="flex items-start justify-between gap-4">
@@ -170,7 +170,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="panel mt-10 px-8 py-10 sm:px-12 sm:py-12">
+      <section className="panel fade-up mt-10 px-8 py-10 sm:px-12 sm:py-12">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="flex items-center gap-3">
@@ -241,7 +241,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-3xl border border-slate-200/70 bg-white/65 p-8 shadow-[0_24px_60px_-48px_rgba(15,23,42,0.45)] backdrop-blur sm:p-10">
+      <section className="fade-up mt-10 rounded-3xl border border-slate-200/70 bg-white/65 p-8 shadow-[0_24px_60px_-48px_rgba(15,23,42,0.45)] backdrop-blur sm:p-10">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="flex items-center gap-3">
@@ -265,7 +265,7 @@ export default function HomePage() {
           {focusAreas.map((area) => (
             <div
               key={area.title}
-              className="card overflow-hidden p-0"
+              className="card fade-up overflow-hidden p-0"
             >
               <div className={`h-2 bg-gradient-to-r ${area.accent}`} />
               <div className="p-5">
