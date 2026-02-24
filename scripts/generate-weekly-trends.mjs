@@ -364,7 +364,7 @@ function renderMarkdown({ date, items, signals }) {
 
   return `---
 title: "AI x Fintech Weekly — ${date}"
-summary: "A weekly, source-backed digest of what’s trending across AI + fintech (auto-curated; no paid APIs)."
+summary: "A weekly, source-backed digest of what’s trending across AI + fintech."
 date: ${date}
 tags: ["AI","Fintech","Payments","Agents","Weekly"]
 ---
@@ -377,19 +377,6 @@ ${signalLines.join("\n")}
 
 ${topLinkLines.join("\n")}
 
-## Notes on the ranking
-
-- This post is auto-curated from public sources only (no LLMs, no paid APIs, no generated claims).
-- Sources used this week:
-  - Hacker News front page (Algolia API)
-  - arXiv feeds for \`cs.AI\` and \`cs.LG\`
-  - MIT Technology Review AI feed
-  - Finextra RSS
-- Ranking is title/link based only, using deterministic keyword heuristics:
-  - fintech keyword boost (payments, fraud, risk, KYC/AML, settlement, reconciliation, ledger, etc.)
-  - AI keyword boost (agents, eval, benchmark, guardrails, inference, RAG, etc.)
-  - extra boost when both fintech and AI keywords appear in the same title
-- Links are deduplicated by normalized URL and normalized title.
 `;
 }
 
