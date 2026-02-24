@@ -12,77 +12,55 @@ export default function ProjectsPage() {
 
   return (
     <Container>
-      <section className="panel mt-10 px-8 py-10 sm:px-12 sm:py-12">
-        <div className="fade-up">
-          <div className="flex items-center gap-3">
-            <span className="accent-rule" />
+      <section className="kj-section mt-12 fade-up">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
             <p className="section-kicker">Works</p>
+            <h1 className="section-title mt-3">Selected systems and engineering case studies.</h1>
+            <p className="section-copy mt-3 max-w-3xl text-sm sm:text-base">
+              Backend platforms, fintech workflows, and reliability-focused builds. Each project page documents architecture, tradeoffs, and implementation details.
+            </p>
           </div>
-          <h1 className="section-title mt-4">Selected systems and engineering case studies.</h1>
-          <p className="section-copy mt-3 max-w-3xl text-sm sm:text-base">
-            Backend platforms, fintech workflows, and reliability-focused builds. Each
-            project page documents tradeoffs, architecture, and implementation details.
-          </p>
+          <Link href="/contact" className="kj-arrow-link text-sm">
+            Let&apos;s talk <span>→</span>
+          </Link>
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          {projects.map((project) => (
-            <article
-              key={project.slug}
-              className="card fade-up p-5"
-            >
-              <div className="flex h-full flex-col">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="min-w-0">
-                    <h2 className="text-xl font-semibold text-slate-900">
-                      <span className="mr-2 inline-block h-2 w-2 rounded-full bg-gradient-to-r from-rose-400 to-amber-300 align-middle" />
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="transition hover:text-rose-700"
-                    >
-                      {project.frontmatter.title}
-                    </Link>
-                    </h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
-                      {project.frontmatter.summary}
-                    </p>
-                  </div>
-                  <span className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                    {project.frontmatter.date}
-                  </span>
+        <div className="kj-list mt-8">
+          {projects.map((project, index) => (
+            <article key={project.slug} className={`kj-row fade-up fade-up-delay-${(index % 3) + 1}`}>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  {project.frontmatter.date ? <span className="kj-meta">{project.frontmatter.date}</span> : null}
+                  {(project.frontmatter.tags ?? []).slice(0, 4).map((tag) => (
+                    <span key={tag} className="pill px-2.5 py-1 text-[11px] font-medium">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-
-                {project.frontmatter.tags?.length ? (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.frontmatter.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="pill px-3 py-1 text-xs font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-
-                <div className="mt-5 flex flex-wrap items-center gap-4 border-t border-slate-100 pt-4 text-sm">
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="font-semibold text-slate-700 transition hover:text-slate-900"
-                  >
-                    Read case study →
+                <h2 className="mt-2 text-2xl leading-tight">
+                  <Link href={`/projects/${project.slug}`} className="kj-title-link">
+                    {project.frontmatter.title}
                   </Link>
-                  {project.frontmatter.github ? (
-                    <a
-                      href={project.frontmatter.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-600 transition hover:text-rose-700"
-                    >
-                      GitHub ↗
-                    </a>
-                  ) : null}
-                </div>
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-600">
+                  {project.frontmatter.summary}
+                </p>
+                {project.frontmatter.github ? (
+                  <a
+                    href={project.frontmatter.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-slate-600 transition hover:text-[#e45447]"
+                  >
+                    GitHub <span>↗</span>
+                  </a>
+                ) : null}
+              </div>
+              <div className="sm:pt-1">
+                <Link href={`/projects/${project.slug}`} className="kj-arrow-link text-sm">
+                  Read <span>→</span>
+                </Link>
               </div>
             </article>
           ))}

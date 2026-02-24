@@ -1,40 +1,46 @@
-import { Container } from "@/components/Container";
 import Link from "next/link";
+import { Container } from "@/components/Container";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16 border-t border-slate-200/70 bg-white/70 py-0 text-sm text-slate-500 backdrop-blur">
-      <div className="h-1.5 w-full bg-gradient-to-r from-rose-400 via-amber-300 to-teal-300" />
+    <footer className="mt-20 border-t border-slate-200/80 bg-[#faf8f4]">
+      <div className="h-1 w-full bg-gradient-to-r from-[#e45447] via-[#f59e0b] to-[#0ea5a4]" />
       <Container>
-        <div className="grid gap-4 py-6 md:grid-cols-[1fr_auto_auto] md:items-center">
+        <div className="grid gap-8 py-10 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
-            <p className="text-sm font-semibold text-slate-700">Felix Sarpong</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.16em] text-slate-400">
-              Backend systems • Fintech • Agent tooling
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              Let&apos;s build
             </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-slate-600">
-            <Link className="transition hover:text-slate-900" href="/projects">
-              Works
-            </Link>
-            <Link className="transition hover:text-slate-900" href="/writing">
-              Writing
-            </Link>
-            <Link className="transition hover:text-slate-900" href="/resume">
-              Resume
-            </Link>
-            <Link className="transition hover:text-slate-900" href="/contact">
-              Contact
-            </Link>
-          </div>
-          <div className="text-xs md:text-right">
+            <h2 className="mt-3 max-w-xl text-2xl font-semibold tracking-[-0.03em] text-slate-950 sm:text-3xl">
+              Reliable systems for products that need trust, speed, and clear operations.
+            </h2>
             <a
               href="mailto:felixsarpong25@gmail.com"
-              className="font-medium text-slate-600 transition hover:text-slate-900"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition hover:text-[#e45447]"
             >
+              <span className="h-2 w-2 rounded-full bg-[#e45447]" aria-hidden="true" />
               felixsarpong25@gmail.com
             </a>
-            <p className="mt-1 text-slate-400">© {new Date().getFullYear()}</p>
+          </div>
+
+          <div className="grid gap-3 text-sm text-slate-600 md:justify-items-end">
+            <div className="flex flex-wrap items-center gap-4">
+              <Link href="/projects" className="nav-link nav-link-muted">
+                works
+              </Link>
+              <Link href="/writing" className="nav-link nav-link-muted">
+                shelf
+              </Link>
+              <Link href="/resume" className="nav-link nav-link-muted">
+                resume
+              </Link>
+              <Link href="/contact" className="nav-link nav-link-muted">
+                contact
+              </Link>
+            </div>
+            <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+              © {new Date().getFullYear()} Felix Sarpong
+            </p>
           </div>
         </div>
       </Container>
