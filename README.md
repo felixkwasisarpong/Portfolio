@@ -38,6 +38,14 @@ tags: [TagA, TagB]
 ---
 ```
 
+### Weekly trends post generator
+
+Generate the weekly AI x fintech digest locally:
+
+```bash
+node scripts/generate-weekly-trends.mjs
+```
+
 ## Resume
 
 Update `public/resume.pdf` with the latest PDF resume.

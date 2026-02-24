@@ -1,0 +1,41 @@
+name: Weekly AI x Fintech Trends
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  weekly-trends:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate weekly post
+        run: node scripts/generate-weekly-trends.mjs
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto/weekly-trends
+          title: Weekly AI x Fintech post
+          commit-message: chore: weekly AI x fintech post
+          body: Auto-generated weekly trends post (source-backed; no paid APIs).
+          add-paths: |
+            content/writing/*.md
+
