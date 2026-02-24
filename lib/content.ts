@@ -46,6 +46,10 @@ function parseFrontmatter(filePath: string): { frontmatter: ContentFrontmatter; 
   };
 }
 
+function normalizeLower(value: string | undefined | null): string {
+  return (value ?? "").trim().toLowerCase();
+}
+
 export function getContentList(type: "projects" | "writing"): ContentListItem[] {
   const dir = getContentDir(type);
   const files = fs.existsSync(dir)
@@ -65,6 +69,26 @@ export function getContentList(type: "projects" | "writing"): ContentListItem[] 
     const bDate = b.frontmatter.date ?? "";
     return bDate.localeCompare(aDate);
   });
+}
+
+export function hasTag(item: ContentListItem, tag: string): boolean {
+  const needle = normalizeLower(tag);
+  if (!needle) return false;
+  return (item.frontmatter.tags ?? []).some((value) => normalizeLower(value) === needle);
+}
+
+export function isWeeklyWritingPost(item: ContentListItem): boolean {
+  const title = normalizeLower(item.frontmatter.title);
+  const slug = normalizeLower(item.slug);
+  return (
+    hasTag(item, "Weekly") ||
+    title.startsWith("ai x fintech weekly") ||
+    slug.includes("ai-fintech-weekly")
+  );
+}
+
+export function getLatestWeeklyWritingPost(): ContentListItem | null {
+  return getContentList("writing").find(isWeeklyWritingPost) ?? null;
 }
 
 export async function getContentBySlug(

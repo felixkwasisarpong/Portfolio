@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { getLatestWeeklyWritingPost } from "@/lib/content";
 
 export default function HomePage() {
+  const latestWeeklyPost = getLatestWeeklyWritingPost();
+
   return (
     <Container>
       {/* Hero */}
@@ -73,6 +76,71 @@ export default function HomePage() {
             aria-label="Contact"
           >
             Contact
+          </Link>
+        </div>
+      </section>
+
+      <section className="panel mt-10 px-8 py-10 sm:px-12 sm:py-12">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-900">Weekly Trends</h2>
+            <p className="text-sm text-slate-600">
+              Auto-curated every Monday (source-backed).
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          {latestWeeklyPost ? (
+            <article className="card p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0">
+                  <div className="mb-2 inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1 text-xs font-semibold text-sky-700">
+                    Weekly
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900">
+                    <Link
+                      href={`/writing/${latestWeeklyPost.slug}`}
+                      className="transition hover:text-sky-600"
+                    >
+                      {latestWeeklyPost.frontmatter.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    {latestWeeklyPost.frontmatter.summary}
+                  </p>
+                </div>
+                <span className="shrink-0 text-xs uppercase tracking-[0.2em] text-slate-400">
+                  {latestWeeklyPost.frontmatter.date}
+                </span>
+              </div>
+
+              {latestWeeklyPost.frontmatter.tags?.length ? (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {latestWeeklyPost.frontmatter.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="pill px-3 py-1 text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </article>
+          ) : (
+            <div className="card p-5 text-sm text-slate-600">
+              No weekly posts yet — check back Monday.
+            </div>
+          )}
+        </div>
+
+        <div className="mt-5">
+          <Link
+            href="/writing?tag=Weekly"
+            className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 hover:text-slate-900"
+          >
+            View all weekly posts →
           </Link>
         </div>
       </section>
