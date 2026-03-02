@@ -46,6 +46,18 @@ Generate the weekly AI x fintech digest locally:
 node scripts/generate-weekly-trends.mjs
 ```
 
+### Weekly schedule on Vercel
+
+`vercel.json` defines a weekly cron that calls `/api/cron/weekly-trends` at `0 14 * * 1` (Monday 8:00 AM CST, 9:00 AM CDT).
+
+Required Vercel environment variables:
+
+- `CRON_SECRET` (used to authorize Vercel cron requests)
+- `GITHUB_WORKFLOW_TOKEN` (GitHub token with permission to dispatch workflows)
+- `GITHUB_REPOSITORY` (optional, defaults to `felixkwasisarpong/Portfolio`)
+- `GITHUB_WORKFLOW_FILE` (optional, defaults to `.github/workflows/weekly-trends.yml`)
+- `GITHUB_WORKFLOW_REF` (optional, defaults to `main`)
+
 ## Resume
 
 Update `public/resume.pdf` with the latest PDF resume.
