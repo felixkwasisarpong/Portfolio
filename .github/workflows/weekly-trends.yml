@@ -34,8 +34,7 @@ jobs:
         with:
           branch: auto/weekly-trends
           title: Weekly AI x Fintech post
-          commit-message: chore: weekly AI x fintech post
+          commit-message: "chore: weekly AI x fintech post"
           body: Auto-generated weekly trends post (source-backed; no paid APIs).
           add-paths: |
             content/writing/*.md
-
