@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import type { CSSProperties } from "react";
 import { Container } from "@/components/Container";
 import { getContentList, getLatestWeeklyWritingPost } from "@/lib/content";
 
@@ -12,8 +14,8 @@ const skillSections = [
     body: "Observability, incident response, performance tuning, and recovery design across AWS, SQL, Redis, and queues.",
   },
   {
-    title: "agent tooling (HITL)",
-    body: "MCP-based workflows with approvals, audit trails, and policy gates so automation stays safe in production.",
+    title: "ai agents (HITL)",
+    body: "MCP-based AI agent workflows with approvals, audit trails, and policy gates so agent automation stays safe in production.",
   },
   {
     title: "full-stack delivery",
@@ -22,6 +24,11 @@ const skillSections = [
 ];
 
 export default function HomePage() {
+  const heroCommand = "felix.sarpong";
+  const heroTypingStyle = {
+    "--typing-width": `${heroCommand.length}ch`,
+    "--typing-steps": `${heroCommand.length}`,
+  } as CSSProperties;
   const latestWeeklyPost = getLatestWeeklyWritingPost();
   const featuredProjects = getContentList("projects").slice(0, 3);
 
@@ -30,10 +37,17 @@ export default function HomePage() {
       <section className="mt-12 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
         <div className="fade-up">
           <p className="section-kicker">Backend Software Engineer • Fintech Systems • Agent Tooling</p>
-          <h1 className="kj-hero-name mt-4">
-            Felix
-            <span className="offset">Sarpong</span>
+          <h1 className="terminal-name mt-4" aria-label="Felix Sarpong">
+            <span className="terminal-name-prompt">$</span>
+            <span
+              className="terminal-type-command inline-block overflow-hidden whitespace-nowrap align-baseline"
+              style={heroTypingStyle}
+            >
+              {heroCommand}
+            </span>
+            <span className="terminal-caret ml-0.5 align-middle" aria-hidden />
           </h1>
+          <p className="terminal-name-role">backend_engineer --focus fintech reliability ai_agents</p>
           <p className="kj-subline mt-6">
             Backend-first full-stack engineer building reliable payment systems,
             operationally safe automation, and production workflows that stay predictable under load.
@@ -53,14 +67,24 @@ export default function HomePage() {
         </div>
 
         <aside className="panel fade-up fade-up-delay-1 p-6">
+          <div className="hero-photo-shell">
+            <Image
+              src="/me.PNG"
+              alt="Felix Sarpong portrait"
+              width={640}
+              height={640}
+              priority
+              className="hero-photo h-56 object-cover object-top sm:h-64"
+            />
+          </div>
           <div className="flex items-center gap-3">
             <span className="accent-rule" />
             <p className="section-kicker">Current focus</p>
           </div>
-          <h2 className="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-slate-950">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-foreground">
             High-trust backend delivery for products that move money and decisions.
           </h2>
-          <div className="mt-6 space-y-4 text-sm leading-7 text-slate-600">
+          <div className="mt-6 space-y-4 text-sm leading-7 text-muted">
             <p>
               I work at the backend/core platform layer: transaction correctness,
               resilience, incident recovery, and integration-heavy workflows.
@@ -130,7 +154,7 @@ export default function HomePage() {
                     {project.frontmatter.title}
                   </Link>
                 </h3>
-                <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-600">
+                <p className="mt-2 max-w-3xl text-sm leading-7 text-muted">
                   {project.frontmatter.summary}
                 </p>
               </div>
@@ -169,7 +193,7 @@ export default function HomePage() {
                   {latestWeeklyPost.frontmatter.title}
                 </Link>
               </h3>
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-600">
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
                 {latestWeeklyPost.frontmatter.summary}
               </p>
               {latestWeeklyPost.frontmatter.tags?.length ? (
@@ -183,7 +207,7 @@ export default function HomePage() {
               ) : null}
             </article>
           ) : (
-            <div className="card p-5 text-sm text-slate-600">
+            <div className="card p-5 text-sm text-muted">
               No weekly posts yet — check back Monday.
             </div>
           )}

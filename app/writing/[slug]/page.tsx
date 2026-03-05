@@ -32,7 +32,7 @@ export default async function WritingPostPage({ params }: PageProps) {
   return (
     <Container>
       <article className="kj-section mt-12 fade-up">
-        <Link href="/writing" className="link-underline text-sm font-semibold text-slate-600">
+        <Link href="/writing" className="link-underline text-sm font-semibold text-muted">
           ← Back to shelf
         </Link>
 
@@ -41,7 +41,7 @@ export default async function WritingPostPage({ params }: PageProps) {
           <p className="section-kicker">Writing</p>
         </div>
 
-        <h1 className="mt-4 max-w-4xl text-3xl font-semibold leading-[0.95] tracking-[-0.04em] text-slate-950 sm:text-5xl">
+        <h1 className="mt-4 max-w-4xl text-3xl font-semibold leading-[0.95] tracking-[-0.04em] text-foreground sm:text-5xl">
           {post.frontmatter.title}
         </h1>
 
@@ -55,7 +55,7 @@ export default async function WritingPostPage({ params }: PageProps) {
         </div>
 
         <div
-          className="markdown mt-10 rounded-xl border border-slate-200 bg-white p-6 sm:p-8"
+          className="markdown mt-10 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
       </article>

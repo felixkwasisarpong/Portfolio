@@ -20,26 +20,26 @@ export default function ContactPage() {
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="card p-6">
             <p className="section-kicker">Primary</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-slate-950">Email</h2>
+            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">Email</h2>
             <a
               href="mailto:felixsarpong25@gmail.com"
-              className="mt-4 inline-flex items-center gap-2 text-lg font-semibold text-slate-900 transition hover:text-[#e45447]"
+              className="mt-4 inline-flex items-center gap-2 text-lg font-semibold text-foreground transition hover:text-[var(--accent)]"
             >
-              <span className="h-2 w-2 rounded-full bg-[#e45447]" aria-hidden="true" />
+              <span className="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true" />
               felixsarpong25@gmail.com
             </a>
-            <p className="mt-3 text-sm text-slate-600">I usually reply fastest by email.</p>
+            <p className="mt-3 text-sm text-muted">I usually reply fastest by email.</p>
           </div>
 
           <div className="card p-6">
             <p className="section-kicker">Elsewhere</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-slate-950">Profiles</h2>
+            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">Profiles</h2>
             <div className="mt-4 space-y-3 text-sm">
               <a
                 href="https://www.linkedin.com/in/felix-kwasi-sarpong/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 font-medium text-slate-700 transition hover:border-slate-300 hover:text-[#e45447]"
+                className="surface-soft flex items-center justify-between rounded-xl px-4 py-3 font-medium text-muted transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
                 <span>LinkedIn</span>
                 <span>↗</span>
@@ -48,7 +48,7 @@ export default function ContactPage() {
                 href="https://github.com/felixkwasisarpong"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 font-medium text-slate-700 transition hover:border-slate-300 hover:text-[#e45447]"
+                className="surface-soft flex items-center justify-between rounded-xl px-4 py-3 font-medium text-muted transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
                 <span>GitHub</span>
                 <span>↗</span>

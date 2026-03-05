@@ -47,8 +47,8 @@ export default async function WritingPage({ searchParams }: PageProps) {
             href="/writing"
             className={`rounded-full border px-3 py-1 font-medium transition ${
               !tagFilter
-                ? "border-slate-900 bg-slate-900 text-white"
-                : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+                ? "border-[var(--accent)] bg-[var(--accent)] text-[#08121f]"
+                : "border-[var(--border)] bg-[var(--surface)] text-muted hover:border-[var(--accent)]"
             }`}
           >
             all
@@ -57,15 +57,15 @@ export default async function WritingPage({ searchParams }: PageProps) {
             href="/writing?tag=Weekly"
             className={`rounded-full border px-3 py-1 font-medium transition ${
               isWeeklyFilter
-                ? "border-slate-900 bg-slate-900 text-white"
-                : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+                ? "border-[var(--accent)] bg-[var(--accent)] text-[#08121f]"
+                : "border-[var(--border)] bg-[var(--surface)] text-muted hover:border-[var(--accent)]"
             }`}
           >
             weekly
           </Link>
           {tagFilter && !isWeeklyFilter ? (
-            <span className="text-xs text-slate-500">
-              Filter: <span className="font-semibold text-slate-700">{tagFilter}</span>
+            <span className="text-xs text-muted-light">
+              Filter: <span className="font-semibold text-foreground">{tagFilter}</span>
             </span>
           ) : null}
         </div>
@@ -88,7 +88,7 @@ export default async function WritingPage({ searchParams }: PageProps) {
                       {post.frontmatter.title}
                     </Link>
                   </h2>
-                  <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-600">{post.frontmatter.summary}</p>
+                  <p className="mt-2 max-w-3xl text-sm leading-7 text-muted">{post.frontmatter.summary}</p>
                   {(post.frontmatter.tags ?? []).length > 0 ? (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {post.frontmatter.tags?.map((tag) => (
@@ -107,7 +107,7 @@ export default async function WritingPage({ searchParams }: PageProps) {
               </article>
             ))
           ) : (
-            <div className="card p-5 text-sm text-slate-600">
+            <div className="card p-5 text-sm text-muted">
               {isWeeklyFilter
                 ? "No weekly posts yet — check back Monday."
                 : tagFilter

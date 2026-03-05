@@ -32,7 +32,7 @@ export default async function ProjectPage({ params }: PageProps) {
   return (
     <Container>
       <article className="kj-section mt-12 fade-up">
-        <Link href="/projects" className="link-underline text-sm font-semibold text-slate-600">
+        <Link href="/projects" className="link-underline text-sm font-semibold text-muted">
           ← Back to works
         </Link>
 
@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <p className="section-kicker">Project</p>
         </div>
 
-        <h1 className="mt-4 max-w-4xl text-3xl font-semibold leading-[0.95] tracking-[-0.04em] text-slate-950 sm:text-5xl">
+        <h1 className="mt-4 max-w-4xl text-3xl font-semibold leading-[0.95] tracking-[-0.04em] text-foreground sm:text-5xl">
           {project.frontmatter.title}
         </h1>
         <p className="section-copy mt-4 max-w-3xl text-sm sm:text-base">{project.frontmatter.summary}</p>
@@ -58,7 +58,7 @@ export default async function ProjectPage({ params }: PageProps) {
               href={project.frontmatter.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-1 inline-flex items-center gap-1 text-sm font-semibold text-slate-700 transition hover:text-[#e45447]"
+              className="ml-1 inline-flex items-center gap-1 text-sm font-semibold text-muted transition hover:text-[var(--accent)]"
             >
               GitHub <span>↗</span>
             </a>
@@ -66,7 +66,7 @@ export default async function ProjectPage({ params }: PageProps) {
         </div>
 
         <div
-          className="markdown mt-10 rounded-xl border border-slate-200 bg-white p-6 sm:p-8"
+          className="markdown mt-10 rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8"
           dangerouslySetInnerHTML={{ __html: project.html }}
         />
       </article>

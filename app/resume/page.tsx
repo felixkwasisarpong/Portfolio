@@ -19,10 +19,10 @@ export default function ResumePage() {
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="card p-6">
             <p className="section-kicker">Download</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-slate-950">
+            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">
               Current resume (PDF)
             </h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
+            <p className="mt-3 text-sm leading-7 text-muted">
               Use the PDF for applications or recruiter outreach. It reflects the current backend / fintech / agent tooling focus represented in this portfolio.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
@@ -37,7 +37,7 @@ export default function ResumePage() {
 
           <div className="card p-6">
             <p className="section-kicker">Profiles</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-slate-950">
+            <h2 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-foreground">
               Links
             </h2>
             <div className="mt-4 space-y-3 text-sm">
@@ -45,7 +45,7 @@ export default function ResumePage() {
                 href="https://www.linkedin.com/in/felix-kwasi-sarpong/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 font-medium text-slate-700 transition hover:border-slate-300 hover:text-[#e45447]"
+                className="surface-soft flex items-center justify-between rounded-xl px-4 py-3 font-medium text-muted transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
                 <span>LinkedIn</span>
                 <span>↗</span>
@@ -54,7 +54,7 @@ export default function ResumePage() {
                 href="https://github.com/felixkwasisarpong"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 font-medium text-slate-700 transition hover:border-slate-300 hover:text-[#e45447]"
+                className="surface-soft flex items-center justify-between rounded-xl px-4 py-3 font-medium text-muted transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
                 <span>GitHub</span>
                 <span>↗</span>

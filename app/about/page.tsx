@@ -38,7 +38,7 @@ export default function AboutPage() {
         </h1>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="space-y-4 text-sm leading-7 text-slate-600 sm:text-base">
+          <div className="space-y-4 text-sm leading-7 text-muted sm:text-base">
             <p>
               I build and support production systems for payments/fintech and data-driven platforms. My core stack is Java (Spring Boot) and Python (FastAPI) on AWS, with event-driven workflows using Kafka, plus full-stack delivery with Angular/React when needed.
             </p>
@@ -52,10 +52,10 @@ export default function AboutPage() {
 
           <aside className="card p-5">
             <p className="section-kicker">Open to</p>
-            <h2 className="mt-3 text-xl font-semibold tracking-[-0.03em] text-slate-950">
+            <h2 className="mt-3 text-xl font-semibold tracking-[-0.03em] text-foreground">
               Backend Engineer / Software Engineer II / Full-Stack (backend-leaning)
             </h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
+            <p className="mt-3 text-sm leading-7 text-muted">
               Especially interested in payments, distributed workflows, reliability engineering, and high-trust product teams.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -73,15 +73,15 @@ export default function AboutPage() {
           </aside>
         </div>
 
-        <div className="mt-10 border-t border-slate-200 pt-8">
+        <div className="mt-10 border-t border-[var(--border)] pt-8">
           <div className="flex items-center gap-3">
             <span className="accent-rule" />
             <p className="section-kicker">Top skills</p>
           </div>
-          <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-slate-950">
+          <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-foreground">
             Tooling and platform stack
           </h2>
-          <p className="mt-2 text-sm text-slate-600">Hover to pause the strip.</p>
+          <p className="mt-2 text-sm text-muted">Hover to pause the strip.</p>
 
           <div className="logo-marquee mt-5" aria-label="Technology stack carousel">
             <div className="logo-track">

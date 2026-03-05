@@ -43,7 +43,7 @@ export default function ProjectsPage() {
                     {project.frontmatter.title}
                   </Link>
                 </h2>
-                <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-600">
+                <p className="mt-2 max-w-3xl text-sm leading-7 text-muted">
                   {project.frontmatter.summary}
                 </p>
                 {project.frontmatter.github ? (
@@ -51,7 +51,7 @@ export default function ProjectsPage() {
                     href={project.frontmatter.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-slate-600 transition hover:text-[#e45447]"
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-muted transition hover:text-[var(--accent)]"
                   >
                     GitHub <span>↗</span>
                   </a>
