@@ -10,10 +10,15 @@ permissions:
 jobs:
   weekly-trends:
     runs-on: ubuntu-latest
+    env:
+      WEEKLY_TRENDS_GH_TOKEN: ${{ secrets.WEEKLY_TRENDS_GH_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.WEEKLY_TRENDS_GH_TOKEN || github.token }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -27,12 +32,37 @@ jobs:
       - name: Generate weekly post
         run: node scripts/generate-weekly-trends.mjs
 
+      - name: Detect generated changes
+        id: changes
+        run: |
+          if [[ -n "$(git status --porcelain -- content/writing)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit directly to main
+        if: steps.changes.outputs.changed == 'true' && env.WEEKLY_TRENDS_GH_TOKEN == ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/writing/*.md
+          git commit -m "chore: weekly AI x fintech post"
+          git push origin HEAD:main
+
       - name: Create pull request
+        if: steps.changes.outputs.changed == 'true' && env.WEEKLY_TRENDS_GH_TOKEN != ''
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.WEEKLY_TRENDS_GH_TOKEN }}
           branch: auto/weekly-trends
+          delete-branch: true
           title: Weekly AI x Fintech post
           commit-message: "chore: weekly AI x fintech post"
           body: Auto-generated weekly trends post (source-backed; no paid APIs).
           add-paths: |
             content/writing/*.md
+
+      - name: No content changes
+        if: steps.changes.outputs.changed != 'true'
+        run: echo "No weekly content changes to publish."

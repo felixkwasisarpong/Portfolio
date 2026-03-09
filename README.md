@@ -48,7 +48,8 @@ node scripts/generate-weekly-trends.mjs
 
 ### Weekly schedule on Vercel
 
-`vercel.json` defines a weekly cron that calls `/api/cron/weekly-trends` at `0 14 * * 1` (Monday 8:00 AM CST, 9:00 AM CDT).
+`vercel.json` defines a weekly cron that calls `/api/cron/weekly-trends` at `0 13 * * 4` (Thursday 8:00 AM CDT, 7:00 AM CST).
+Vercel cron jobs run on production deployments only. On Hobby, jobs are queued within the scheduled hour rather than guaranteed at the exact minute.
 
 Required Vercel environment variables:
 
@@ -57,6 +58,12 @@ Required Vercel environment variables:
 - `GITHUB_REPOSITORY` (optional, defaults to `felixkwasisarpong/Portfolio`)
 - `GITHUB_WORKFLOW_FILE` (optional, defaults to `.github/workflows/weekly-trends.yml`)
 - `GITHUB_WORKFLOW_REF` (optional, defaults to `main`)
+
+GitHub workflow behavior:
+
+- By default, the dispatched workflow commits the generated weekly post directly to `main`.
+- If you add the `WEEKLY_TRENDS_GH_TOKEN` repository secret in GitHub Actions, the workflow switches to PR mode and uses that token to open/update `auto/weekly-trends`.
+- You can reuse the same PAT value for both Vercel's `GITHUB_WORKFLOW_TOKEN` and GitHub's `WEEKLY_TRENDS_GH_TOKEN` if it has the needed repo/actions permissions.
 
 ## Resume
 
